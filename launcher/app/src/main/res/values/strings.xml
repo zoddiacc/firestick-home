@@ -1,0 +1,7 @@
+<resources>
+    <!-- Default name. config.txt home_name= changes what the home screen shows. -->
+    <string name="app_name">My Home</string>
+    <string name="home_key_name">My Home: Home button</string>
+    <string name="home_key_description">Opens My Home when you press the remote\'s Home button. Reads no screen content.</string>
+    <string name="dream_name">My Home photo</string>
+</resources>

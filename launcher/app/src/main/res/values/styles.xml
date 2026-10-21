@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.MyHome" parent="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">false</item>
+    </style>
+</resources>

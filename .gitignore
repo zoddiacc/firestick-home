@@ -1,0 +1,30 @@
+# Your own settings and photos: never commit these
+/config.txt
+/photos/
+*.jpg
+*.jpeg
+!docs/screenshots/*.jpg
+
+# Device state, logs and test output (they contain your device's settings and IDs)
+/backup/
+/screenshots/
+/test-results/
+*.log
+logcat*.txt
+
+# Signing keys
+*.jks
+*.keystore
+*.pem
+*.p12
+key.properties
+
+# Build
+launcher/.gradle/
+launcher/**/build/
+launcher/local.properties
+.venv/
+__pycache__/
+.DS_Store
+.idea/
+*.iml

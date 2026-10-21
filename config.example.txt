@@ -1,0 +1,24 @@
+# My Home launcher settings. Copy to config.txt (gitignored), edit, then:
+#   tools/push-config.sh        (home name, weather, favourites, hidden apps)
+#   tools/push-photo.sh         (photo)
+
+# Name shown next to the greeting on the home screen.
+home_name=My Home
+
+# Weather (Open-Meteo, no account, refreshed every 30 min). Leave town empty to turn weather off:
+# then the launcher makes no network calls at all. There is no IP lookup.
+town=Your Town
+latitude=00.00
+longitude=00.00
+
+# Photo for the home background and the screensaver, on THIS computer (not on the TV).
+# Best: 4:3, faces in the upper half. It is cropped to 1440x1080 and all metadata (EXIF/GPS) is removed.
+# photos/ is gitignored. No photo = a neutral dark gradient.
+photo=photos/home.jpg
+
+# Favourites row, in order (package names). Apps that are not installed are skipped.
+# Find package names with:  adb shell pm list packages -3
+favourites=com.netflix.ninja,com.amazon.firetv.youtube,com.amazon.firebat
+
+# Extra apps to hide from All apps (Amazon system entries are hidden already).
+hidden=

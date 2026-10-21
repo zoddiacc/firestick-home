@@ -1,0 +1,94 @@
+# Fire TV debloat list. Measured on a Fire TV Stick Lite (AFTSS), Fire OS 7.7.1.7 (PS7717/5741), Android 9 / API 28.
+# Other Fire OS 7 sticks share most of these packages; check each batch with `tools/batch.py show <N>` first.
+# Base: the cleanyourtv example lists toshiba-fire-tv-aftha004 (same build PS7717.5741N) and
+# amazon-fire-tv-stick-4k-2018 (MIT, https://github.com/Gathin23/cleanyourtv), plus packages found on the device.
+#
+# WARNING: use at your own risk. Disable only (pm disable-user --user 0), never uninstall. Everything here can be
+# re-enabled with tools/restore.sh. Apply one batch at a time and check the stick still works before the next.
+#
+# Apply one batch:  tools/batch.py apply <N>      (logs to backup/applied.log, then reboots + verifies)
+# Undo:             tools/restore.sh              (re-enables everything in backup/applied.log)
+#
+# NOT listed, on purpose:
+#   HOME / Settings / core: com.amazon.tv.launcher (also hosts android.settings.SETTINGS), com.amazon.firehomestarter,
+#     com.amazon.tv.settings.*, com.amazon.device.settings, anything sharedUser=android.uid.system or PERSISTENT
+#     (com.amazon.tifobserver, com.amazon.media.recommendations, com.amazon.neodelegate)
+#   Prime Video / DRM: com.amazon.firebat, com.amazon.tv.support, all drm/widevine/playready HALs
+#   Identity / SSO / profiles: com.amazon.imp, com.amazon.prism.android.service, com.amazon.aca, com.amazon.d3,
+#     com.amazon.katoch, com.amazon.spiderpork, com.amazon.alta.h2clientservice, com.amazon.tv.turnstile
+#   Appstore: com.amazon.venezia, com.amazon.tigris. OTA: com.amazon.device.software.ota*
+#   Voice search on the remote: com.amazon.vizzini (+ aria, cardinal, alexa.datastore, alexadirectivebrokerservice)
+#   Casting: com.amazon.cast.sink, dialservice, whisperlink/whisperplay, awvflingreceiver
+#   Input / BT / keyboard / accessibility / TTS / screensaver / profile picker / captive portal (com.amazon.cpl)
+#   Protected on this build (pm refuses without root), per cleanyourtv: com.amazon.device.metrics,
+#     com.amazon.ftvads.deeplinking, com.amazon.client.metrics, com.amazon.device.logmanager,
+#     com.amazon.device.crashmanager, com.amazon.diode, com.fireos.usagestats.proxy, com.amazon.tv.csapp, com.amazon.tv.oobe
+
+## batch 1: telemetry, metrics, logging (nothing user-facing)
+com.amazon.tv.fw.metrics                # Fire TV framework metrics
+com.amazon.client.metrics.api           # metrics client API
+com.amazon.wirelessmetrics.service      # Wi-Fi metrics upload
+com.amazon.perfcollection               # performance data collection
+com.amazon.perfc                        # performance collector
+com.amazon.dp.logger                    # device platform logger
+com.amazon.neo.minerva                  # Minerva metrics pipeline (3.3 MB resident)
+com.amazon.neo.minerva.logcat           # Minerva logcat uploader
+com.amazon.ceviche                      # data collection pipelines
+com.amazon.wifilocker                   # syncs Wi-Fi passwords to Amazon
+
+## batch 2: ads, sponsored content, ad ID, ACR
+com.amazon.kso.blackbird                # launcher ad sync / bidding (sponsored banner + rows)
+com.amazon.sneakpeek                    # sponsored "Sneak Peek" previews
+com.amazon.hybridadidservice            # advertising ID service
+com.amazon.tv.easyupgrade               # "upgrade your Fire TV" promos
+com.amazon.shoptv.client                # Amazon Shopping on TV
+com.amazon.shoptv.firetv.client         # Amazon Shopping on TV (Fire TV client)
+com.amazon.tv.acr                       # automatic content recognition
+com.amazon.tv.developer.dataservice     # personalization data shared with 3rd-party apps
+com.amazon.privacypassservice           # privacy pass token service
+com.amazon.systemnotices                # system notice popups (2.5 MB resident)
+
+## batch 3: Live tab, channels, promos, tutorials
+com.amazon.hedwig                       # Fire TV Channels (free ad-supported channels row)
+com.amazon.tv.livetv                    # Live tab and guide
+com.amazon.franktvinput                 # live TV input feeding the Live tab
+com.amazon.livedeviceservice            # live device service for the Live tab
+com.amazon.gamehub                      # games hub / Luna cards
+com.amazon.minitv.android.app           # Amazon miniTV stub (India)
+com.amazon.storm.lightning.tutorial     # remote app tutorial
+com.amazon.tmm.tutorial                 # remote tutorial
+com.amazon.tv.releasenotes              # "what's new" release notes
+com.amazon.uxnotification               # UX notification popups
+
+## batch 4: Alexa extras (voice search stays), multi-room audio, setup of other devices
+com.amazon.tv.alexaalerts               # Alexa alarms, timers, reminders
+com.amazon.tv.alexanotifications        # Alexa notifications
+com.amazon.alexa.externalmediaplayer.fireos   # Alexa music playback
+com.amazon.alexamediaplayer.runtime.ftv # Alexa media player runtime (11 MB resident)
+com.amazon.aiondec                      # Alexa skill connections
+com.amazon.whad                         # whole-home audio (11 MB resident)
+com.amazon.whasettings                  # whole-home audio settings
+com.amazon.wha.mediabrowserservice      # whole-home audio media browser
+com.amazon.whisperjoin.middleware.np    # frustration-free setup of other Amazon devices (5.5 MB resident)
+com.amazon.tv.ffsprovisioneeclient      # frustration-free setup client
+
+## batch 5: preloaded Amazon apps
+com.amazon.tahoe                        # Amazon Kids (FreeTime)
+com.amazon.bueller.music                # Amazon Music
+com.amazon.bueller.photos               # Amazon Photos
+com.amazon.cloud9                       # Silk browser
+com.amazon.tv.website_launcher          # opens websites in Silk
+com.amazon.ods.kindleconnect            # "show on Fire TV" from Echo / Fire tablet
+com.amazon.naatyam                      # Amazon India content app (on Toshiba list, same build)
+com.amazon.providers.contentsupport     # content support provider
+
+## batch 6: NOT applied, untested. Found on the device, not in any example list; all commented out on purpose
+# com.amazon.tv.matter                  # Matter smart-home controller?
+# com.amazon.tv.mattercohost            # Matter co-host?
+# com.amazon.comms.starktachyon         # Alexa calling / drop-in?
+# com.amazon.rtcsessioncontroller       # real-time comms session (calling)?
+# com.amazon.spotify.mediabrowserservice  # Alexa <-> Spotify bridge?
+# com.amazon.firetv.androidskillconnectioncapability  # Alexa skill connections?
+# com.amazon.audiohome                  # stub (/system/priv-app/com.amazon.audiohome-stub)
+# com.amazon.avls.experience            # AV latency sync calibration?
+# com.android.printspooler              # print spooler, unused on a TV

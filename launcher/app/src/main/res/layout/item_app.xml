@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One tile, three looks: banner (fills the tile), icon card (no banner), shortcut (centred icon). -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="136dp"
+    android:layout_height="80dp"
+    android:layout_marginEnd="14dp"
+    android:layout_marginBottom="14dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/card_focus">
+    <ImageView android:id="@+id/banner" android:layout_width="match_parent" android:layout_height="match_parent"
+        android:scaleType="fitXY" android:importantForAccessibility="no" android:visibility="gone" />
+    <ImageView android:id="@+id/center_icon" android:layout_width="28dp" android:layout_height="28dp"
+        android:layout_gravity="center" android:importantForAccessibility="no" android:visibility="gone" />
+    <ImageView android:id="@+id/icon" android:layout_width="40dp" android:layout_height="40dp"
+        android:layout_gravity="top|end" android:layout_margin="9dp" android:scaleType="fitCenter"
+        android:importantForAccessibility="no" />
+    <TextView android:id="@+id/name" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start" android:layout_marginStart="11dp" android:layout_marginEnd="8dp"
+        android:layout_marginBottom="9dp" android:ellipsize="end" android:fontFamily="sans-serif-medium"
+        android:maxLines="1" android:shadowColor="#66000000" android:shadowDy="1" android:shadowRadius="3"
+        android:textColor="#FFFFFFFF" android:textSize="13sp" android:textStyle="bold" />
+</FrameLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The live time + AM/PM. Shared by the home screen's clock pill and HomeOverlay, so the overlay's live clock is
+     pixel-identical to the one in the snapshot underneath it. -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextClock android:id="@+id/clock_time" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:format12Hour="h:mm" android:format24Hour="h:mm" android:fontFamily="sans-serif-medium"
+        android:textColor="@color/text" android:textSize="22sp" android:textStyle="bold" />
+    <TextClock android:id="@+id/clock_ampm" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginStart="4dp" android:format12Hour="a" android:format24Hour="a" android:fontFamily="sans-serif-medium"
+        android:textAllCaps="true" android:textColor="@color/text" android:textSize="12sp" />
+</merge>

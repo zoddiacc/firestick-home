@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="#FF000000">
+    <ImageView android:id="@+id/photo" android:layout_width="match_parent" android:layout_height="match_parent"
+        android:scaleType="centerCrop" android:importantForAccessibility="no" />
+    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/scrim_dream" />
+    <LinearLayout android:id="@+id/clock_box" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start" android:layout_marginStart="56dp" android:layout_marginBottom="44dp"
+        android:orientation="vertical">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="bottom">
+            <TextClock android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:format12Hour="h:mm" android:format24Hour="h:mm" android:fontFamily="sans-serif-thin"
+                android:includeFontPadding="false" android:textColor="#F2FFFFFF" android:textSize="64sp" />
+            <TextClock android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp"
+                android:layout_marginBottom="10dp" android:format12Hour="a" android:format24Hour="a"
+                android:fontFamily="sans-serif-light" android:textAllCaps="true" android:textColor="#CCFFFFFF" android:textSize="16sp" />
+        </LinearLayout>
+        <TextClock android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="2dp"
+            android:format12Hour="EEEE, d MMMM" android:format24Hour="EEEE, d MMMM" android:fontFamily="sans-serif-light"
+            android:textColor="#B3FFFFFF" android:textSize="16sp" />
+    </LinearLayout>
+</FrameLayout>
